@@ -1,30 +1,37 @@
-import { PropTypes } from 'prop-types'
+import { useContext } from 'react'
+import { LayoutContext } from '../context/LayoutProvider'
+import { Overlay } from './Overlay'
+import { ButtonDisplay } from './ButtonDisplay'
 import { Screen } from './Screen'
-import { Grid } from '@mui/material'
+import Grid from '@mui/material/Unstable_Grid2'
 
-export function Layout({ headerHeight, contentHeight }) {
+export function Layout() {
+  const { headerHeight, contentHeight, footerHeight } = useContext(LayoutContext)
+
   return (
     <>
-      <Grid
-        container
-        direction='column'
-        wrap='nowrap'
-        style={{ height: '100vh', alignItems: 'center' }}
-      >
-        <Grid style={{ height: headerHeight }} />
-        <Grid
-          container
-          direction='column'
-          wrap='nowrap'
-          style={{ width: '68%', height: contentHeight }}>
-          <Screen />
+      <Overlay />
+      <ButtonDisplay/>
+      <Grid container>
+        <Grid width='16%' />
+
+        <Grid width='68%'>
+          <Grid>
+            <div style={{ height: headerHeight }} />
+
+            <div style={{ height: contentHeight }}>
+              <Screen />
+            </div>
+
+            <div style={{ height: footerHeight }} />
+          </Grid>
         </Grid>
+
+        <Grid width='16%' />
+      </Grid>
+      <Grid container>
+        <div>Hola</div>
       </Grid>
     </>
   )
-}
-
-Layout.propTypes = {
-  headerHeight: PropTypes.number.isRequired,
-  contentHeight: PropTypes.number.isRequired,
 }
