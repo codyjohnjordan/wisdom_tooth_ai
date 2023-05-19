@@ -2,7 +2,7 @@ import { useState } from 'react';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
-import { NearMe } from '@mui/icons-material';
+import { NearMeOutlined } from '@mui/icons-material';
 
 export function UserInput() {
   const [userInput, setUserInput] = useState('')
@@ -35,7 +35,7 @@ export function UserInput() {
         type='button'
         aria-label='search'
       >
-        <NearMe color='info'/>
+        <NearMeOutlined color='info'/>
       </IconButton>
     </Box>
   )
