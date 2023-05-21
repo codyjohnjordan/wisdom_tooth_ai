@@ -1,25 +1,71 @@
-import { useState } from 'react'
-import { MessageDisplay } from './MessageDisplay'
-import { UserInput } from './UserInput'
+import { useState, useEffect, useRef } from 'react'
+import { postUser } from '../service/api.js'
+import { ToothIcon } from '../assets/ToothIcon.jsx'
+import { Message } from './Message.jsx'
+import { IconButton, List, ListItem, ListItemAvatar, ListItemText, Box, InputBase } from '@mui/material'
+import { AccountCircle, MoreHoriz, NearMeOutlined } from '@mui/icons-material'
 
 export function Screen() {
-  const [messages, setMessages] = useState([]);
+  const [isDisabled, setDisabled] = useState(false)
+  const [userInput, setUserInput] = useState('')
+  const [messages, setMessages] = useState([])
+  const messagesEnd = useRef(null)
 
-  const sendMessage = (data) => {
-    setMessages([...messages, { type: 'user', content: data.user }])
-    console.log(data)
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    if (userInput == '') return
+    if (isDisabled === false) {
+      const userMessage = { type: 'user', content: userInput }
+      setMessages((prevMessages) => [...prevMessages, userMessage])
+      document.getElementById('input-form').reset()
+      setDisabled(true)
+      const response = await postUser(userInput)
+      setUserInput('')
+      setMessages((prevMessages) => [...prevMessages, response])
+      return setDisabled(false)
+    } else return
   }
 
+  useEffect(() => {
+    messagesEnd.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages])
+
   return (
-    <div style={{
-      display: 'flex',
-      boxSizing: 'border-box',
-      flexFlow: 'column nowrap',
-      height: '100%',
-      width: '100%'
-    }}>
-      <MessageDisplay messages={messages} />
-      <UserInput sendMessage={sendMessage} />
+    <div style={{ height: '100%', display: 'flex', flexFlow: 'column nowrap' }}>
+      <List className='message-display' style={{ overflowY: 'auto', height: '100%' }}>
+        {messages.map((msg, ind) =>
+          <ListItem
+            key={ind}
+            ref={ind == messages.length - 1 ? messagesEnd : null}
+            alignItems='center'
+            style={{
+              background: msg.type == 'user' ? '#343541' : '#444654',
+              color: 'white',
+              padding: '1%',
+            }}
+          >
+            <ListItemAvatar>
+              {msg.type == 'user' ? <AccountCircle /> : <ToothIcon />}
+            </ListItemAvatar>
+            <ListItemText>
+              <Message shouldType={msg.type == 'answer'} text={msg.content} />
+            </ListItemText>
+          </ListItem>
+        )}
+      </List>
+
+      <Box component='form' id='input-form' onSubmit={handleSubmit}
+        style={{ display: 'flex', flexFlow: 'row nowrap', background: '#343541' }}>
+        <InputBase
+          placeholder='Send a message.'
+          inputProps={{ 'aria-label': 'write a message' }}
+          onChange={e => setUserInput(e.target.value)}
+          style={{ width: '100%', color: 'white', paddingInlineStart: '10px' }}
+        />
+        <IconButton type='submit' aria-label='send'>
+          {isDisabled ? <MoreHoriz /> : <NearMeOutlined />}
+        </IconButton>
+      </Box>
     </div>
   )
 }

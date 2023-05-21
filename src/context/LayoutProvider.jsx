@@ -1,9 +1,9 @@
 import { useReducer, createContext, useEffect } from 'react';
 import LayoutReducer from './LayoutReducer.js';
 
-const headerRatio = 7.5
-const contentRatio = 3.85
-const footerRatio = 3.25
+const headerRatio = 7
+const contentRatio = 3.2
+const footerRatio = 6.2
 
 const initialState = {
   headerHeight: window.innerWidth / headerRatio,

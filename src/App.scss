@@ -1,5 +1,12 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8vw;
+}
+
+@media screen and (min-width: 900px) {
+  * {
+    font-size: 1rem;
+  }
 }
 
 body {
@@ -8,9 +15,51 @@ body {
 }
 
 #root {
-  background-color: #343541,
+  background-color: grey,
 }
 
-div {
-  border: 2px solid black;
+.message-display {
+  /* Set a fixed height or max-height to enable scrolling */
+  height: 300px;
+  overflow: auto;
+  /* Hide the default scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* Track */
+.message-display::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle */
+.message-display::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+.message-display::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Track when scrolling */
+.message-display::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Add a gradient effect to the track */
+.message-display::-webkit-scrollbar-track:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Add a gradient effect to the bottom of the track */
+.message-display::-webkit-scrollbar-track-piece:end {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.05) 100%);
 }
