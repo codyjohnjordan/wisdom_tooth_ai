@@ -59,7 +59,7 @@ Message.propTypes = {
 }
 
 Message.defaultProps = {
-  typingDelay: 100,
+  typingDelay: 50,
   cursorBlinkInterval: 500,
   shouldType: true,
 }
