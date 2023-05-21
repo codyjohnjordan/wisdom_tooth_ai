@@ -1,12 +1,12 @@
 .typing-effect {
   position: relative;
-  display: inline-block; /* Add this line to make the component inline */
+  display: inline-block;
 }
 
 .blinking-cursor {
   position: absolute;
   bottom: 0.1em;
-  left: calc(100% + 0.2em); /* Update this line to position the cursor relative to the right edge */
+  left: calc(100% + 0.2em);
   width: 0.5em;
   height: 1em;
   background-color: white;

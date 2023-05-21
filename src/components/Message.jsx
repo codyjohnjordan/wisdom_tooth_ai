@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './TypingEffect.scss'
 
-export function Message ({ text, typingDelay, cursorBlinkInterval, shouldType }) {
+export function Message({ text, typingDelay, cursorBlinkInterval, shouldType }) {
   const [typedText, setTypedText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showCursor, setShowCursor] = useState(true)
@@ -59,7 +59,7 @@ Message.propTypes = {
 }
 
 Message.defaultProps = {
-  typingDelay: 50,
+  typingDelay: 20,
   cursorBlinkInterval: 500,
   shouldType: true,
 }

@@ -1,7 +1,6 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.8vw;
-  overflow: hidden;
 }
 
 @media screen and (min-width: 900px) {
@@ -13,6 +12,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 #root {

@@ -37,7 +37,7 @@ export function Screen() {
           <ListItem
             key={ind}
             ref={ind == messages.length - 1 ? messagesEnd : null}
-            alignItems='center'
+            alignItems='flex-start'
             style={{
               background: msg.type == 'user' ? '#343541' : '#444654',
               color: 'white',
