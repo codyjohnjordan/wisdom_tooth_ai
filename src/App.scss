@@ -15,7 +15,8 @@ body {
 }
 
 #root {
-  background-color: grey,
+  background-color: grey;
+  overflow: hidden;
 }
 
 .message-display {

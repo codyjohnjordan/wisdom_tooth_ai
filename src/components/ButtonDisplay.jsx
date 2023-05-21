@@ -1,10 +1,8 @@
-import { useContext, useState } from 'react'
-import { LayoutContext } from '../context/LayoutProvider'
+import { useState } from 'react'
 import { Box, ButtonBase, Modal } from '@mui/material'
 import { Close } from '@mui/icons-material'
 
 export function ButtonDisplay() {
-  const { headerHeight } = useContext(LayoutContext)
   const [isModal1Open, setModal1Open] = useState(false)
   const [isModal2Open, setModal2Open] = useState(false)
 
@@ -18,34 +16,35 @@ export function ButtonDisplay() {
   }
 
   const modalStyle = {
+    display: 'flex',
+    flexFlow: 'column nowrap',
     position: 'absolute',
-    top: headerHeight * 2.2,
+    top: 'calc(50vh - 100vw * 0.19)',
     left: '50%',
-    transform: 'translate(-50%, -60%)',
-    width: headerHeight * 4,
-    height: headerHeight * 2,
-    background: 'white',
+    transform: 'translate(-50%)',
+    width: window.innerWidth * 0.65,
+    height: window.innerWidth * 0.3,
+    background: 'grey',
     border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
+    boxSizing: 'border-box',
+    color: 'white',
+    padding: '10px'
   }
 
   const logoStyle = {
     position: 'fixed',
-    top: headerHeight * 0.48,
-    fontSize: '1.8vw',
-    color: '#504c42',
+    top: 'calc(50vh - 100vw * 0.268)',
     left: '50%',
     transform: 'translate(-50%)',
+    fontSize: '1.8vw',
+    color: '#504c42',
     zIndex: 2,
   }
 
   const buttonStyle = {
     boxSizing: 'border-box',
     position: 'fixed',
-    top: headerHeight * 3.6,
+    top: 'calc(50vh + 100vw * 0.18)',
     fontSize: '1.8vw',
     color: '#504c42',
     border: '2px solid #aea79a',
@@ -87,7 +86,7 @@ export function ButtonDisplay() {
               <Close />
             </ButtonBase>
           </div>
-          <div className='message-display' style={{ height: '85%' }}>
+          <div className='message-display'>
             <p>Welcome to the home of WisdomTooth AI, your dedicated assistant for dentistry and oral surgery.</p>
             <p>Created with a single aim, our AI chatbot is designed to bridge the gap between complex dental terminology for students, doctors, and patients who seek to understand the intricacies of oral health. We envision a world where knowledge about dental procedures, oral hygiene, and oral surgery is easily accessible to all, and this chatbot is our step towards that direction.</p>
             <p>Our AI chatbot leverages the most advanced artificial intelligence and machine learning techniques, trained extensively in the field of dentistry and oral surgery. It is equipped to explain dental procedures, offer differential diagnosis, and even provide educational material to students studying dentistry. It serves as a handy tool for doctors looking to brush up on their knowledge or stay updated with the latest in oral health and surgery.</p>
@@ -112,7 +111,7 @@ export function ButtonDisplay() {
               <Close />
             </ButtonBase>
           </div>
-          <div className='message-display' style={{ height: '85%' }}>
+          <div className='message-display'>
             <p></p>
           </div>
         </Box>

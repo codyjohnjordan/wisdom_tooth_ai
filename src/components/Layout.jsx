@@ -1,58 +1,31 @@
-import { useContext } from 'react'
-import { LayoutContext } from '../context/LayoutProvider'
 import { Overlay } from './Overlay'
 import { ButtonDisplay } from './ButtonDisplay'
 import { Screen } from './Screen'
 import Grid from '@mui/material/Unstable_Grid2'
 
 export function Layout() {
-  const { headerHeight, contentHeight, footerHeight } = useContext(LayoutContext)
   const screenBG = '#343541'
 
   return (
     <>
       <Overlay />
       <ButtonDisplay />
-      <Grid container>
+      <Grid container height={'100vh'}>
         <Grid width='10%' />
-        <Grid width='6%'>
-          <div style={{ marginTop: headerHeight * 0.9, height: contentHeight * 1.1, background: screenBG }} />
-        </Grid>
 
-        <Grid width='68%'>
+        <Grid width='80%'>
           <Grid>
-            <div style={{ height: headerHeight * 0.5 }} />
-            <div style={{ height: headerHeight * 0.5, background: screenBG }} />
+            <div style={{ height: 'calc(50vh - 100vw * 0.25)', background: 'none' }} />
 
-            <div style={{ height: contentHeight, background: screenBG }}>
+            <div style={{ height: 'calc(100vw * 0.31)', background: screenBG, padding: '6vw 6vw 6vw 6vw' }}>
               <Screen />
             </div>
-
-            <div style={{ height: footerHeight, background: screenBG }} />
           </Grid>
         </Grid>
 
-        <Grid width='6%'>
-          <div style={{ marginTop: headerHeight * 0.9, height: contentHeight * 1.1, background: screenBG }} />
-        </Grid>
         <Grid width='10%' />
       </Grid>
-      <Grid container>
-        <div style={{
-          height: window.innerHeight - headerHeight - contentHeight - footerHeight,
-          width: '100vw',
-          display: 'flex',
-          boxSizing: 'border-box',
-          flexFlow: 'column nowrap',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          paddingTop: '20px',
-          background: '#343541',
-          color: 'white',
-          fontSize: '1.4vw',
-        }} >
-        </div>
-      </Grid>
+      <div style={{ position: 'absolute', width: '100vw', bottom: 0, height: 'calc(50vh - 100vw * 0.28)', background: screenBG }} />
     </>
   )
 }
