@@ -7,7 +7,7 @@ export async function postUser(input) {
   const config = {
     timeout: 5000,
     cancelToken: source.token,
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   }
 
   const body = JSON.stringify({ user: input })
