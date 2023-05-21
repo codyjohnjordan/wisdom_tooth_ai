@@ -6,10 +6,11 @@ export async function postUser(input) {
 
   const config = {
     timeout: 5000,
-    cancelToken: source.token
+    cancelToken: source.token,
+    headers: { 'Content-Type': 'application/json' }
   }
 
-  const body = JSON.stringify({ "user": "What is the capital of Russia?" })
+  const body = JSON.stringify({ user: input })
 
   try {
     const response = await axios.post(API_URL, body, config).then(data => data.data)
