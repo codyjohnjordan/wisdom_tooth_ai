@@ -5,7 +5,7 @@ export async function postUser(input) {
   const source = axios.CancelToken.source()
 
   const config = {
-    timeout: 5000,
+    timeout: 20000,
     cancelToken: source.token,
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   }
