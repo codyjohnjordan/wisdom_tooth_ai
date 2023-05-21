@@ -1,5 +1,5 @@
 import { LayoutProvider } from '../context/LayoutProvider'
-import { Layout } from '../components/layout'
+import { Layout } from '../components/Layout'
 
 export function Front() {
   return (
