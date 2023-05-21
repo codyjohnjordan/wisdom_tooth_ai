@@ -14,7 +14,7 @@ export async function postUser(input) {
 
   try {
     const response = await axios.post(API_URL, body, config)
-    return { type: 'answer', content: response.data }
+    return { type: 'answer', content: response.data.answer }
   } catch (error) {
     return { type: 'answer', content: 'Some error has occurred' }
   }
