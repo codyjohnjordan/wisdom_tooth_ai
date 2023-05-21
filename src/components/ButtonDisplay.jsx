@@ -12,14 +12,18 @@ export function ButtonDisplay() {
   const closeModal1 = () => setModal1Open(false)
   const openModal2 = () => setModal2Open(true)
   const closeModal2 = () => setModal2Open(false)
+  const closeModals = () => {
+    setModal1Open(false)
+    setModal2Open(false)
+  }
 
   const modalStyle = {
     position: 'absolute',
-    top: '50%',
+    top: headerHeight * 2.2,
     left: '50%',
     transform: 'translate(-50%, -60%)',
-    width: 600,
-    height: 400,
+    width: headerHeight * 4,
+    height: headerHeight * 2,
     background: 'white',
     border: '2px solid #000',
     boxShadow: 24,
@@ -54,6 +58,7 @@ export function ButtonDisplay() {
   return (
     <>
       <ButtonBase
+        onClick={closeModals}
         style={logoStyle}>
         WisdomTooth AI
       </ButtonBase>
@@ -69,8 +74,9 @@ export function ButtonDisplay() {
       </ButtonBase>
       <Modal
         hideBackdrop
+        disableEnforceFocus
         open={isModal1Open}
-        onClose={closeModal1}
+        onClose={null}
         aria-labelledby="About"
         aria-describedby="Information about developers"
       >
@@ -93,8 +99,9 @@ export function ButtonDisplay() {
       </Modal>
       <Modal
         hideBackdrop
+        disableEnforceFocus
         open={isModal2Open}
-        onClose={closeModal2}
+        onClose={null}
         aria-labelledby="Contact"
         aria-describedby="Contact information"
       >
