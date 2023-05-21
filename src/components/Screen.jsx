@@ -32,7 +32,7 @@ export function Screen() {
 
   return (
     <div style={{ height: '100%', display: 'flex', flexFlow: 'column nowrap' }}>
-      <List className='message-display' style={{ overflowY: 'auto', height: '100%' }}>
+      <List className='message-display' style={{ height: '100%' }}>
         {messages.map((msg, ind) =>
           <ListItem
             key={ind}
