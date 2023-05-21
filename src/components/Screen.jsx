@@ -63,7 +63,7 @@ export function Screen() {
           style={{ width: '100%', color: 'white', paddingInlineStart: '10px' }}
         />
         <IconButton type='submit' aria-label='send'>
-          {isDisabled ? <MoreHoriz /> : <NearMeOutlined />}
+          {isDisabled ? <MoreHoriz htmlColor='white' /> : <NearMeOutlined htmlColor='white'/>}
         </IconButton>
       </Box>
     </div>
