@@ -9,7 +9,7 @@ export function Overlay() {
       width: '100vw',
       backgroundImage: `url(${backgroundImage})`,
       backgroundRepeat: 'no-repeat',
-      backgroundSize: '100% auto',
+      backgroundSize: 'contain',
       backgroundAttachment: 'fixed',
       backgroundPositionY: '50%',
       zIndex: 1,
