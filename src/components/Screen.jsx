@@ -31,7 +31,7 @@ export function Screen() {
   }, [messages])
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexFlow: 'column nowrap' }}>
+    <div style={{ height: '100%', width: '100%', display: 'flex', flexFlow: 'column nowrap' }}>
       <List className='message-display' style={{ height: '100%' }}>
         {messages.map((msg, ind) =>
           <ListItem
@@ -44,7 +44,7 @@ export function Screen() {
               padding: '1%',
             }}
           >
-            <ListItemAvatar>
+            <ListItemAvatar style={{ minWidth: 'auto', paddingRight: '15px', marginTop: '4px' }}>
               {msg.type == 'user' ? <AccountCircle /> : <ToothIcon />}
             </ListItemAvatar>
             <ListItemText>
@@ -63,7 +63,7 @@ export function Screen() {
           style={{ width: '100%', color: 'white', paddingInlineStart: '10px' }}
         />
         <IconButton type='submit' aria-label='send'>
-          {isDisabled ? <MoreHoriz htmlColor='white' /> : <NearMeOutlined htmlColor='white'/>}
+          {isDisabled ? <MoreHoriz htmlColor='white' /> : <NearMeOutlined htmlColor='white' />}
         </IconButton>
       </Box>
     </div>

@@ -3,6 +3,8 @@ import { Box, ButtonBase, Modal } from '@mui/material'
 import { Close } from '@mui/icons-material'
 
 export function ButtonDisplay() {
+  const heightToWidthRatio = 1064 / 1864
+
   const [isModal1Open, setModal1Open] = useState(false)
   const [isModal2Open, setModal2Open] = useState(false)
 
@@ -19,38 +21,38 @@ export function ButtonDisplay() {
     display: 'flex',
     flexFlow: 'column nowrap',
     position: 'absolute',
-    top: 'calc(50vh - 100vw * 0.19)',
+    top: '50%',
     left: '50%',
-    transform: 'translate(-50%)',
-    width: window.innerWidth * 0.65,
-    height: window.innerWidth * 0.3,
+    transform: 'translate(-50%,-62%)',
+    width: window.innerHeight / window.innerWidth > heightToWidthRatio ? '64vw' : '112vh',
+    height: window.innerHeight / window.innerWidth > heightToWidthRatio ? '32vw' : '56vh',
     background: 'grey',
     border: '2px solid #000',
     boxSizing: 'border-box',
     color: 'white',
-    padding: '10px'
+    padding: '10px',
   }
 
   const logoStyle = {
     position: 'fixed',
-    top: 'calc(50vh - 100vw * 0.268)',
+    top: window.innerHeight / window.innerWidth > heightToWidthRatio ? 'calc(50vh - 100vw * 0.256)' : '5%',
     left: '50%',
-    transform: 'translate(-50%)',
-    fontSize: '1.8vw',
+    transform: 'translate(-50%, -50%)',
+    fontSize: window.innerHeight / window.innerWidth > heightToWidthRatio ? '1.8vw' : '3.2vh',
     color: '#504c42',
     zIndex: 2,
   }
 
   const buttonStyle = {
-    boxSizing: 'border-box',
     position: 'fixed',
-    top: 'calc(50vh + 100vw * 0.18)',
-    fontSize: '1.8vw',
+    top: window.innerHeight / window.innerWidth > heightToWidthRatio ? 'calc(50vh + 100vw * 0.195)' : '84%',
+    transform: 'translate(-50%, -50%)',
+    fontSize: window.innerHeight / window.innerWidth > heightToWidthRatio ? '1.8vw' : '3.2vh',
     color: '#504c42',
     border: '2px solid #aea79a',
     borderRadius: '20px',
     backgroundColor: '#d4d4c9',
-    padding: '0.4vw 1vw',
+    padding: window.innerHeight / window.innerWidth > heightToWidthRatio ? '0.4vw 1vw' : '0.8vh 1.5vh',
     zIndex: 2,
   }
 
@@ -63,12 +65,12 @@ export function ButtonDisplay() {
       </ButtonBase>
       <ButtonBase
         onClick={openModal1}
-        style={{ ...buttonStyle, left: '20%' }}>
+        style={{ ...buttonStyle, left: window.innerHeight / window.innerWidth > heightToWidthRatio ? '21.5%' : 'calc(50vw - 100vh * 0.50)' }}>
         About
       </ButtonBase>
       <ButtonBase
         onClick={openModal2}
-        style={{ ...buttonStyle, left: '28%' }}>
+        style={{ ...buttonStyle, left: window.innerHeight / window.innerWidth > heightToWidthRatio ? '33%' : 'calc(50vw - 100vh * 0.30)' }}>
         Contact
       </ButtonBase>
       <Modal
