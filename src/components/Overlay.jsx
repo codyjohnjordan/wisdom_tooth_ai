@@ -11,6 +11,7 @@ export function Overlay() {
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
       backgroundAttachment: 'fixed',
+      backgroundPositionX: '50%',
       backgroundPositionY: '50%',
       zIndex: 1,
       pointerEvents: 'none',
